@@ -35,6 +35,9 @@ public class BreakingPlatformScript : MonoBehaviour {
             gameObject.transform.position =
                 Vector3.Lerp(transform.position, chasePosition, Time.deltaTime * shakeStrength);
         }
+        else {
+            transform.position = Vector3.Lerp(transform.position, startPos, Time.deltaTime * shakeStrength);
+        }
 
         if (timeUntilNextBreakStep <= 0) {
             breakStep++;
