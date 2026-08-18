@@ -3,15 +3,13 @@ using UnityEngine;
 
 public class MovingPlatformScript : MonoBehaviour {
     private Vector2 StartPos { get; set; }
-    private Vector2 Range { get; set; }
+    [SerializeField] private Vector2 Range;
     private float Facing { get; set; }
-    private float Speed { get; set; }
+    [SerializeField] private float Speed ;
 
     private void OnEnable() {
         StartPos = transform.position;
-        Range = new (-4, 4);
         Facing = 1;
-        Speed = 2f;
     }
 
     private void Update() {
@@ -21,7 +19,6 @@ public class MovingPlatformScript : MonoBehaviour {
             transform.position.x >= StartPos.x + Range.y
         ) {
             Facing *= -1;
-            Debug.Log("Swapping dir");
         }
         
     }
