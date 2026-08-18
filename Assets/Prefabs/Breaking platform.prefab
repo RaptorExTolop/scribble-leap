@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3040313281653946348}
   - component: {fileID: 8125941694450290856}
+  - component: {fileID: 3980472179311922166}
   m_Layer: 0
   m_Name: tilemap_packed_50
   m_TagString: Untagged
@@ -84,6 +85,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &3980472179311922166
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 758718896837307065}
+  m_BodyType: 0
+  m_Simulated: 0
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &3176685265017597901
 GameObject:
   m_ObjectHideFlags: 0
@@ -94,6 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3636814346766822347}
   - component: {fileID: 4021962447856470457}
+  - component: {fileID: 3529358717258052644}
   m_Layer: 0
   m_Name: tilemap_packed_49
   m_TagString: Untagged
@@ -168,6 +197,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &3529358717258052644
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3176685265017597901}
+  m_BodyType: 0
+  m_Simulated: 0
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &3214123716186729570
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,6 +321,8 @@ MonoBehaviour:
   - {fileID: 9036022151143529778}
   - {fileID: 3176685265017597901}
   - {fileID: 758718896837307065}
+  shakeStrength: 75
+  shakeAmount: 0.2
 --- !u!1 &9036022151143529778
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,6 +333,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5173418117663860315}
   - component: {fileID: 8644302612518545836}
+  - component: {fileID: 3942435324392391823}
   m_Layer: 0
   m_Name: tilemap_packed_48
   m_TagString: Untagged
@@ -349,3 +408,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &3942435324392391823
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9036022151143529778}
+  m_BodyType: 0
+  m_Simulated: 0
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

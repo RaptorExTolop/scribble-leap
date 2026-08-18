@@ -6,7 +6,7 @@ public class BreakingPlatformScript : MonoBehaviour {
     [SerializeField] public GameObject[] platforms = new GameObject[3];
 
     // breaking
-    private bool playerStanding = true;
+    private bool playerStanding = false;
     private float BreakTimer = 0.5f;
     private float timeUntilNextBreakStep = 0.0f;
     private int breakStep = 0;
@@ -24,33 +24,41 @@ public class BreakingPlatformScript : MonoBehaviour {
         breakStep = 0;
         ExplodeForceRange = new Vector2(-200, 200);
         startPos = transform.position;
+        shakeing = -1;
     }
 
     private void Update() {
-        timeUntilNextBreakStep -= Time.deltaTime;
-        shakeing -= Time.deltaTime;
-
+        shakeing -= Time.deltaTime;    
+        /* if thingy is thingy shaking*/
         if (shakeing > 0) {
             Vector2 chasePosition = startPos + (Random.insideUnitCircle.normalized * shakeAmount);
             gameObject.transform.position =
                 Vector3.Lerp(transform.position, chasePosition, Time.deltaTime * shakeStrength);
         }
-        else {
+        /* if we are not shaking go back towards the start position */
+        else if (breakStep < 3) {
             transform.position = Vector3.Lerp(transform.position, startPos, Time.deltaTime * shakeStrength);
         }
 
-        if (timeUntilNextBreakStep <= 0) {
-            breakStep++;
+        if (playerStanding) {
+            /* update timers */
+            timeUntilNextBreakStep -= Time.deltaTime;
+            if (timeUntilNextBreakStep <= 0) {
+                breakStep++;
+                timeUntilNextBreakStep = BreakTimer;
+                if (breakStep < 3) {
+                    shakeing = ShakeTimer;
+                }
+                else if (breakStep == 3) {
+                    Break();
+                }
+                else if (breakStep > 5) {
+                    Destroy(gameObject);
+                }
+            }
+        }
+        else {
             timeUntilNextBreakStep = BreakTimer;
-            if (breakStep < 3) {
-                shakeing = ShakeTimer;
-            }
-            else if (breakStep == 3) {
-                Break();
-            }
-            else if (breakStep > 5) {
-                Destroy(gameObject);
-            }
         }
     }
 
@@ -68,4 +76,16 @@ public class BreakingPlatformScript : MonoBehaviour {
 
             }
     }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        if (other.gameObject.CompareTag("Player")) {
+            playerStanding = true;
+        }
+    }
+
+    /*private void OnCollisionExit2D(Collision2D other) {
+        if (other.gameObject.CompareTag("Player")) {
+            playerStanding = false;
+        }
+    }*/
 }
