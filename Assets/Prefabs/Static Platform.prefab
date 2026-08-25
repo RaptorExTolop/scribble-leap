@@ -180,6 +180,7 @@ GameObject:
   - component: {fileID: 560344878185334484}
   - component: {fileID: 2901756830091860681}
   - component: {fileID: 5238047092299035447}
+  - component: {fileID: 3102423749464374091}
   m_Layer: 0
   m_Name: Static Platform
   m_TagString: Platforms
@@ -329,6 +330,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &3102423749464374091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3214123716186729570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b4c1b37eb1086543af4b1ccfccdbc85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9036022151143529778
 GameObject:
   m_ObjectHideFlags: 0

@@ -32,9 +32,9 @@ public class PlayerController : MonoBehaviour {
 
         if (onPlatform) {
             jumping -= Time.deltaTime;
-            Debug.Log(jumping);
+            // Debug.Log(jumping);
             if (jumping < 0) {
-                Debug.Log("Jumping");
+                // Debug.Log("Jumping");
                 rb.AddForce(new(0, jumpHeight));
                 
                 jumping = jumpTimer;
@@ -44,7 +44,6 @@ public class PlayerController : MonoBehaviour {
         }
         
         rb.AddForce(new(speed * direction * Time.deltaTime, 0));
-
         float clampedX = Mathf.Clamp(rb.velocity.x, -maxSpeed, maxSpeed);
         rb.velocity = new Vector2(clampedX, rb.velocity.y);
     }
