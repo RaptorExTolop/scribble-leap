@@ -82,10 +82,4 @@ public class BreakingPlatformScript : PlatformScript {
             playerStanding = true;
         }
     }
-
-    /*private void OnCollisionExit2D(Collision2D other) {
-        if (other.gameObject.CompareTag("Player")) {
-            playerStanding = false;
-        }
-    }*/
 }

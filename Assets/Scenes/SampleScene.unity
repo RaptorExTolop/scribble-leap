@@ -1135,7 +1135,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1980,7 +1980,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.1
+  m_AngularDrag: 0.5
   m_GravityScale: 10
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -2085,7 +2085,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1933966331506370284, guid: 6a2519cf963369c4b9e37d3e894717f4, type: 3}
       propertyPath: Range.x
-      value: -2
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 1933966331506370284, guid: 6a2519cf963369c4b9e37d3e894717f4, type: 3}
       propertyPath: Range.y
@@ -2153,8 +2153,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 97578789}
   - {fileID: 1392750386}
-  - {fileID: 963194228}
   - {fileID: 683869156}
+  - {fileID: 963194228}
   - {fileID: 2104243154}
   - {fileID: 1733665641}
   - {fileID: 149721535}

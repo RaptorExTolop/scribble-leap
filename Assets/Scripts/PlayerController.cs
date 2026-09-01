@@ -14,10 +14,13 @@ public class PlayerController : MonoBehaviour {
     private float jumping = 0;
     private bool onPlatform;
 
+    private Vector2 startPostion = new(2, 0);
+
     private void OnEnable() {
         rb = gameObject.GetComponent<Rigidbody2D>();
         jumping = jumpTimer;
         onPlatform = false;
+        transform.position = startPostion;
     }
 
     private void Update() {

@@ -1,14 +1,11 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour {
-    [SerializeField] public PlatformScript []Platforms;
-    [SerializeField] public GameObject []PlatformPrefabs; 
+public class GameManager : MonoBehaviour {
+    [SerializeField] public List<PlatformScript> Platforms = new List<PlatformScript>();
+    [SerializeField] public GameObject[] PlatformPrefabs; 
     [SerializeField] public PlayerController Player;
 
     [SerializeField] public TextMeshProUGUI HighScoresText;
@@ -30,7 +27,7 @@ public class NewBehaviourScript : MonoBehaviour {
         get { return gameState; }
     }
 
-    private int score;
+    private float score;
     private int highScore;
     private int lastScore;
 
@@ -47,14 +44,12 @@ public class NewBehaviourScript : MonoBehaviour {
         StartText.gameObject.SetActive(true);
         StartTimerText.gameObject.SetActive(false);
         
-        foreach (var platform in Platforms) {
-            platform.gameObject.SetActive(false);
-        }
+        change_platform_state(false);
     }
 
     private void Update() {
         if (Input.GetKey(KeyCode.Space)) {
-            AddScore(2);
+            AddScore(2 * Time.deltaTime);
         }
         
         switch (gameState) {
@@ -74,14 +69,6 @@ public class NewBehaviourScript : MonoBehaviour {
     }
 
     private void GameStateHomescreen() {
-        HighScoresText.gameObject.SetActive(true);
-        CurrentScore.gameObject.SetActive(true);
-        GameScore.gameObject.SetActive(false);
-        StartText.gameObject.SetActive(true);
-        StartTimerText.gameObject.SetActive(false);
-
-        Debug.Log("HOMESCREEN");
-        
         if (Input.anyKeyDown) {
             HighScoresText.gameObject.SetActive(false);
             CurrentScore.gameObject.SetActive(false);
@@ -92,32 +79,66 @@ public class NewBehaviourScript : MonoBehaviour {
             
             gameState = GameState.STARTING;
             starting = startTimer;
+
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 
     private void GameStateStarting() {
-        Debug.Log("STARTING THE GAME");
         starting -= Time.deltaTime;
         StartTimerText.text = "Starting in: " + starting.ToString("F0");
         GameScore.text = "Current score: " + score.ToString("F0");
         if (starting < 0) {
             gameState = GameState.PLAYING;
+            StartTimerText.gameObject.SetActive(false);
+            
+            Player.gameObject.SetActive(true);
+            change_platform_state(true);
+            
         }
     }
 
     private void GameStatePlaying() {
-        Debug.Log("Your mum");
+        if (Input.GetKeyDown(KeyCode.Y)) {
+            Dye();
+        }      
     }
 
-    public void AddScore(int amount = 1) {
+    public void AddScore(float amount = 1) {
         score += amount;
     }
 
     public void Dye() {
-        lastScore = score;
+        lastScore = (int)score;
         if (score > highScore) {
-            highScore = score;
+            highScore = (int)score;
         }
         score = 0;
+
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+
+        gameState = GameState.HOMESCREEN;
+        
+        HighScoresText.gameObject.SetActive(true);
+        CurrentScore.gameObject.SetActive(true);
+        GameScore.gameObject.SetActive(false);
+        StartText.gameObject.SetActive(true);
+        StartTimerText.gameObject.SetActive(false);
+        
+        Player.gameObject.SetActive(false);
+        change_platform_state(false);
+    }
+
+    void change_platform_state(bool state) {
+        for (var i = 0; i < Platforms.Count; ++i) {
+            if (Platforms[i] == null) {
+                Platforms.RemoveAt(i);
+            }
+            else {
+                Platforms[i].gameObject.SetActive(state);
+            }
+        }
     }
 }
