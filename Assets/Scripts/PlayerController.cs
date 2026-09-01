@@ -10,11 +10,11 @@ public class PlayerController : MonoBehaviour {
     private Rigidbody2D rb;
     public float maxSpeed = 800;
 
-    private float jumpTimer = 0.100f;
+    private float jumpTimer = 0.050f;
     private float jumping = 0;
     private bool onPlatform;
 
-    private Vector2 startPostion = new(2, 0);
+    private Vector2 startPostion = new(0, 0);
 
     private void OnEnable() {
         rb = gameObject.GetComponent<Rigidbody2D>();
@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour {
         rb.velocity = new Vector2(clampedX, rb.velocity.y);
     }
 
-    private void OnCollisionStay2D(Collision2D other) {
+    private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.CompareTag("Platforms")) {
             foreach (var contanct in other.contacts) {
                 if (contanct.normal.y > 0.5f) {
