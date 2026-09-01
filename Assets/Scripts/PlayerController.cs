@@ -5,12 +5,22 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
     private int direction;
-    private float speed = 800;
-    private float jumpHeight = 690;
+    public float speed = 1200;
+    public float jumpHeight = 2000;
     private Rigidbody2D rb;
+    public float maxSpeed = 800;
+
+    private float jumpTimer = 0.100f;
+    private float jumping = 0;
+    private bool onPlatform;
+
+    private Vector2 startPostion = new(2, 0);
 
     private void OnEnable() {
         rb = gameObject.GetComponent<Rigidbody2D>();
+        jumping = jumpTimer;
+        onPlatform = false;
+        transform.position = startPostion;
     }
 
     private void Update() {
@@ -23,10 +33,37 @@ public class PlayerController : MonoBehaviour {
             direction += 1;
         }
 
-        /*if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space)) {
-            rb.AddForce(new Vector2(0, jumpHeight * Time.deltaTime));
-        }*/
+        if (onPlatform) {
+            jumping -= Time.deltaTime;
+            // Debug.Log(jumping);
+            if (jumping < 0) {
+                // Debug.Log("Jumping");
+                rb.AddForce(new(0, jumpHeight));
+                
+                jumping = jumpTimer;
+            }
+        } else {
+            jumping = jumpTimer;
+        }
         
-        rb.AddForce(new Vector2(direction * speed * Time.deltaTime, 0));
+        rb.AddForce(new(speed * direction * Time.deltaTime, 0));
+        float clampedX = Mathf.Clamp(rb.velocity.x, -maxSpeed, maxSpeed);
+        rb.velocity = new Vector2(clampedX, rb.velocity.y);
+    }
+
+    private void OnCollisionStay2D(Collision2D other) {
+        if (other.gameObject.CompareTag("Platforms")) {
+            foreach (var contanct in other.contacts) {
+                if (contanct.normal.y > 0.5f) {
+                    onPlatform = true;
+                }
+            }
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D other) {
+        if (other.gameObject.CompareTag("Platforms")) {
+            onPlatform = false;
+        }
     }
 }

@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class BreakingPlatformScript : MonoBehaviour {
+public class BreakingPlatformScript : PlatformScript {
     [SerializeField] public GameObject[] platforms = new GameObject[3];
 
     // breaking
@@ -82,10 +82,4 @@ public class BreakingPlatformScript : MonoBehaviour {
             playerStanding = true;
         }
     }
-
-    /*private void OnCollisionExit2D(Collision2D other) {
-        if (other.gameObject.CompareTag("Player")) {
-            playerStanding = false;
-        }
-    }*/
 }

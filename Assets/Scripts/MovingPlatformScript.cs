@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class MovingPlatformScript : MonoBehaviour {
+public class MovingPlatformScript : PlatformScript {
     private Vector2 StartPos { get; set; }
     [SerializeField] private Vector2 Range;
     private float Facing { get; set; }
