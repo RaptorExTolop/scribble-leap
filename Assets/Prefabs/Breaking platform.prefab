@@ -235,6 +235,7 @@ GameObject:
   - component: {fileID: 7101515440765398083}
   - component: {fileID: 2901756830091860681}
   - component: {fileID: 6602715086917499890}
+  - component: {fileID: -1852453867481652383}
   m_Layer: 0
   m_Name: Breaking platform
   m_TagString: Platforms
@@ -323,6 +324,25 @@ MonoBehaviour:
   - {fileID: 758718896837307065}
   shakeStrength: 75
   shakeAmount: 0.2
+--- !u!251 &-1852453867481652383
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3214123716186729570}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 0
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &9036022151143529778
 GameObject:
   m_ObjectHideFlags: 0
