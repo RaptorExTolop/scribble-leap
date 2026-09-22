@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour {
     [SerializeField] public TextMeshProUGUI StartText;
     [SerializeField] public TextMeshProUGUI StartTimerText;
 
+	[SerializeField] public PlatformSpawner platformSpawner;
+
     private float startTimer = 3f;
     private float starting = 0f;
 
@@ -33,6 +35,7 @@ public class GameManager : MonoBehaviour {
 
     private void Awake() {
         gameState = GameState.HOMESCREEN;
+		platformSpawner.SpawnPlatforms(1);
     }
 
     private void OnEnable() {
