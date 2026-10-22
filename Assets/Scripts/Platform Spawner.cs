@@ -15,7 +15,7 @@ public class PlatformSpawner : MonoBehaviour {
     //[SerializeField] private int platformHeight = 32;
 
 	public void SpawnPlatforms(int viewportOffset) {
-        for (var i = 0; i < 20; ++i) {
+        for (var i = 0; i < 10; ++i) {
             float randomX = UnityEngine.Random.Range(0.1f, 0.9f);
             float distFromCamera = Mathf.Abs(GameCamera.transform.position.z);
             Vector3 worldPoint = GameCamera.ViewportToWorldPoint(new Vector3(randomX, (float)(i*viewportOffset)/20, distFromCamera));

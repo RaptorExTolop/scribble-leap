@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
     private int direction;
@@ -49,6 +50,10 @@ public class PlayerController : MonoBehaviour {
         rb.AddForce(new(speed * direction * Time.deltaTime, 0));
         float clampedX = Mathf.Clamp(rb.velocity.x, -maxSpeed, maxSpeed);
         rb.velocity = new Vector2(clampedX, rb.velocity.y);
+
+        if (Camera.main.WorldToScreenPoint(transform.position).y <= 0) {
+            SceneManager.LoadScene(0);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other) {

@@ -35,7 +35,10 @@ public class GameManager : MonoBehaviour {
 
     private void Awake() {
         gameState = GameState.HOMESCREEN;
-		platformSpawner.SpawnPlatforms(1);
+
+        for (int i = 0; i < 1000; i++) {
+		    platformSpawner.SpawnPlatforms(1 + i * 4);
+        }
     }
 
     private void OnEnable() {
