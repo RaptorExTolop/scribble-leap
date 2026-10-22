@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -12,6 +13,7 @@ public class PlatformSpawner : MonoBehaviour {
     [SerializeField] public Camera GameCamera;
     [SerializeField] private int distFromCamBeforeRespawning;
     //[SerializeField] private int platformHeight = 32;
+    private TextMeshProUGUI
 
 	public void SpawnPlatforms(int viewportOffset) {
         for (var i = 0; i < 20; ++i) {
